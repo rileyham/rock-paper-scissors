@@ -4,13 +4,13 @@ function getComputerChoice() {
     let resultString;
 
     if (result<1) {
-        resultString = "Rock";
+        resultString = "rock";
     } 
     else if (result<2 && result>=1) {
-        resultString = "Paper";
+        resultString = "paper";
     }
     else {
-        resultString = "Scissors";
+        resultString = "scissors";
     }
     return resultString;
 }
@@ -19,22 +19,23 @@ function getComputerChoice() {
 // and return a string announcing the result
 function playRound(playerChoice,computerChoice) {
     let outputString;
-    if(playerChoice =="Rock") {
-        if(computerChoice == "Rock") {
+    playerChoice = playerChoice.toLowerCase();
+    if(playerChoice == "rock") {
+        if(computerChoice == "rock") {
             outputString = "You Tied! You both played rock.";
         }
-        else if(computerChoice == "Scissors") {
+        else if(computerChoice == "scissors") {
             outputString = "You Win! Rock beats scissors.";
         }
         else {
             outputString = "You Lose! Paper beats rock.";
         }
     }
-    else if(playerChoice == "Scissors") {
-        if(computerChoice == "Rock") {
+    else if(playerChoice == "scissors") {
+        if(computerChoice == "rock") {
             outputString = "You Lose! Rock beats scissors.";
         }
-        else if(computerChoice == "Scissors") {
+        else if(computerChoice == "scissors") {
             outputString = "You Tied! You both played scissors.";
         }
         else {
@@ -42,10 +43,10 @@ function playRound(playerChoice,computerChoice) {
         }
     }
     else {
-        if(computerChoice == "Rock") {
+        if(computerChoice == "rock") {
             outputString = "You Win! Paper beats rock.";
         }
-        else if(computerChoice == "Scissors") {
+        else if(computerChoice == "scissors") {
             outputString = "You Lose! Scissors beats paper.";
         }
         else {
