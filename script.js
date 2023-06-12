@@ -15,7 +15,7 @@ function getComputerChoice() {
     return resultString;
 }
 
-// playRound take in player and computer selection 
+// playRound - take in player and computer selection 
 // and return a string announcing the result
 function playRound(playerChoice,computerChoice) {
     let outputString;
@@ -55,3 +55,31 @@ function playRound(playerChoice,computerChoice) {
     }
     return outputString;
 }
+
+// game - plays a 5 round game that keeps
+// score an reports winner at the end
+let GAMES_COUNT = 5;
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i<GAMES_COUNT; i++) {
+        let playerChoice = prompt("Make your choice!");
+        roundResult = playRound(playerChoice, getComputerChoice());
+
+        if (roundResult.substring(4,5) == "W") {
+            playerScore++;
+        }
+        else if (roundResult.substring(4,5) == "L") {
+            computerScore++;
+        }
+        else {
+
+        }
+        console.log(roundResult);
+    }
+    console.log(" - FINAL SCORE - ");
+    console.log("You: " + playerScore);
+    console.log("Computer: " + computerScore);
+}
+
+game();
