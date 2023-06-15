@@ -85,16 +85,17 @@ function game(){
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
+const results = document.getElementById("results");
 
 rock.addEventListener("click", function() {
-                        console.log(playRound("rock", getComputerChoice()));
-                        });
+        results.textContent = playRound("rock", getComputerChoice());
+        });
 paper.addEventListener("click", function() {
-                        console.log(playRound("paper", getComputerChoice()));
-                        });
+        results.textContent = playRound("paper", getComputerChoice());
+        });
 scissors.addEventListener("click", function() {
-                        console.log(playRound("scissors", getComputerChoice()));
-                        });
+        results.textContent = playRound("scissors", getComputerChoice());
+        });
 
 
 // game();
