@@ -58,7 +58,7 @@ function playRound(playerChoice,computerChoice) {
 
 // game - plays a 5 round game that keeps
 // score an reports winner at the end
-let GAMES_COUNT = 5;
+const GAMES_COUNT = 5;
 function game(){
     let playerScore = 0;
     let computerScore = 0;
@@ -82,4 +82,19 @@ function game(){
     console.log("Computer: " + computerScore);
 }
 
-game();
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+
+rock.addEventListener("click", function() {
+                        console.log(playRound("rock", getComputerChoice()));
+                        });
+paper.addEventListener("click", function() {
+                        console.log(playRound("paper", getComputerChoice()));
+                        });
+scissors.addEventListener("click", function() {
+                        console.log(playRound("scissors", getComputerChoice()));
+                        });
+
+
+// game();
