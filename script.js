@@ -1,3 +1,15 @@
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const results = document.getElementById("results");
+const playerScoreDisplay = document.getElementById("playerScore");
+const computerScoreDisplay = document.getElementById("computerScore");
+const announcement = document.getElementById("announcement");
+
+let playerScore = 0;
+let computerScore = 0;
+const MAX_SCORE = 5;
+
 // gitComputerChoice - randomly return rock, paper, or scissors
 function getComputerChoice() {
     let result = Math.random() * 3;
@@ -19,7 +31,6 @@ function getComputerChoice() {
 // and return a string announcing the result
 function playRound(playerChoice,computerChoice) {
     let outputString;
-    playerChoice = playerChoice.toLowerCase();
     if(playerChoice == "rock") {
         if(computerChoice == "rock") {
             outputString = "You Tied! You both played rock.";
@@ -56,46 +67,37 @@ function playRound(playerChoice,computerChoice) {
     return outputString;
 }
 
-// game - plays a 5 round game that keeps
-// score an reports winner at the end
-const GAMES_COUNT = 5;
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i<GAMES_COUNT; i++) {
-        let playerChoice = prompt("Make your choice!");
-        roundResult = playRound(playerChoice, getComputerChoice());
+// game - plays 1 round of RPS
+function game(playerChoice){
+    computerChoice = getComputerChoice();
 
-        if (roundResult.substring(4,5) == "W") {
-            playerScore++;
-        }
-        else if (roundResult.substring(4,5) == "L") {
-            computerScore++;
-        }
-        else {
+    roundResult = playRound(playerChoice, computerChoice);
 
-        }
-        console.log(roundResult);
+    if (roundResult.substring(4,5) == "W") {
+        playerScore++;
     }
-    console.log(" - FINAL SCORE - ");
-    console.log("You: " + playerScore);
-    console.log("Computer: " + computerScore);
+    else if (roundResult.substring(4,5) == "L") {
+        computerScore++;
+    }
+
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+    announcement.textContent = roundResult;
+
+    if (playerScore >=  MAX_SCORE && computerScore < MAX_SCORE ) {
+        announcement.textContent = "---You Won the Game!---";
+    }
+    else if(computerScore >= MAX_SCORE && playerScore < MAX_SCORE){
+        announcement.textContent = "---You Lost the Game.---";
+    }
 }
 
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-const results = document.getElementById("results");
-
 rock.addEventListener("click", function() {
-        results.textContent = playRound("rock", getComputerChoice());
-        });
+    game("rock");
+    });
 paper.addEventListener("click", function() {
-        results.textContent = playRound("paper", getComputerChoice());
-        });
+    game("paper")
+    });
 scissors.addEventListener("click", function() {
-        results.textContent = playRound("scissors", getComputerChoice());
-        });
-
-
-// game();
+    game("scissors")
+    });
